@@ -19,4 +19,18 @@ describe("Counter", () => {
     await user.click(screen.getByText("Decrement"));
     expect(screen.getByTestId("count")).toHaveTextContent("-1");
   });
+
+  it("resets count to 0", async () => {
+    const user = userEvent.setup();
+    render(<Counter />);
+
+    await user.click(screen.getByRole("button", { name: /increment/i }));
+    await user.click(screen.getByRole("button", { name: /increment/i }));
+
+    expect(screen.getByTestId("count")).toHaveTextContent("2");
+
+    await user.click(screen.getByRole("button", { name: /reset/i }));
+
+    expect(screen.getByTestId("count")).toHaveTextContent("0");
+  });
 });
