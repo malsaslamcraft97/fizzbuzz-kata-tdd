@@ -15,4 +15,15 @@ describe("FizzBuzz component", () => {
 
     expect(screen.getByTestId("result")).toHaveTextContent("FizzBuzz");
   });
+
+  it("shows default value when input is cleared", async () => {
+    const user = userEvent.setup();
+    render(<FizzBuzz />);
+
+    const input = screen.getByRole("spinbutton");
+
+    await user.clear(input);
+
+    expect(screen.getByTestId("result")).toHaveTextContent("1");
+  });
 });
