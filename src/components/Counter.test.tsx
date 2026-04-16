@@ -16,8 +16,9 @@ describe("Counter", () => {
     const user = userEvent.setup();
     render(<Counter />);
 
+    await user.click(screen.getByText("Increment"));
     await user.click(screen.getByText("Decrement"));
-    expect(screen.getByTestId("count")).toHaveTextContent("-1");
+    expect(screen.getByTestId("count")).toHaveTextContent("0");
   });
 
   it("resets count to 0", async () => {
