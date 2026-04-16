@@ -36,7 +36,7 @@ describe("FizzBuzz component", () => {
     // Add new rule
     await user.type(screen.getByTestId("rule-number-input"), "2");
     await user.type(screen.getByTestId("rule-text-input"), "Foo");
-    await user.click(screen.getByText("Add Rule"));
+    await user.click(screen.getByRole("button", { name: /add rule/i }));
 
     await user.clear(input);
     await user.type(input, "2");
