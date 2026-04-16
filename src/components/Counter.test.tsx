@@ -33,4 +33,13 @@ describe("Counter", () => {
 
     expect(screen.getByTestId("count")).toHaveTextContent("0");
   });
+
+  it("does not go below 0", async () => {
+    const user = userEvent.setup();
+    render(<Counter />);
+
+    await user.click(screen.getByRole("button", { name: /decrement/i }));
+
+    expect(screen.getByTestId("count")).toHaveTextContent("0");
+  });
 });
