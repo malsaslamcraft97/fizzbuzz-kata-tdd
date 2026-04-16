@@ -9,6 +9,7 @@ export default function Counter() {
       <p data-testid="count">{count}</p>
       <button onClick={() => setCount((c) => c + 1)}>Increment</button>
       <button onClick={() => setCount((c) => c - 1)}>Decrement</button>
+      <button onClick={() => setCount(0)}>Reset</button>
     </div>
   );
 }
